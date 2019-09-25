@@ -7,13 +7,17 @@
 
 
 $('.link').click(function (e) {
+    // added 23 09 by Wim
+    console.log("link clicked");
+    $('#modalleke').find('*').not('.closeModal').remove();
+    $('#modalleke').css("display", "none");
     // Stop the link being followed:
     e.preventDefault();
     // Get the div to be shown:
     var content = $(this).attr('rel');
     // Remove any active classes:
     if ($(this).hasClass('active')) {
-        addClass('active');
+        removeClass('active');
     } else {
         $(this).addClass('active');
     }
@@ -64,16 +68,21 @@ $(".typewriter-effect").typer({
 // ADDED BY WIM 22 09 2019 !!!!
 
 jQuery(document).ready(function($) {
-        console.log("helloworld");  
+   //      console.log("helloworld");
+   //      $('.menu').on('click', function(){
+   //  console.log("navigatieitem geklikt");
+   //  $('#modalleke').css("display", "none");
+   // });  
    $('.card').on('click', function(){
     // $('#modalleke').load('profielindi.php');
     $image = $(this).find('.card-img-top').attr('src');
-    $voornaam = $(this).find(".card-title").text();
+    $voornaam = $(this).find(".card-sub-title").text();
+    $naam = $(this).find(".card-title").text();
     $omschrijving = $(this).find(".card-body").text();
     $waarom = $(this).find('input[name="waarom"]').val();
     $wat = $(this).find('input[name="wat"]').val();
     $waarde = $(this).find('input[name="waarde"]').val();
-    $feb = $(this).find('input[name="feb"]').val();
+    $fob = $(this).find('input[name="fob"]').val();
     $skill1 = $(this).find('input[name="skill1"]').val();
     $skill2 = $(this).find('input[name="skill2"]').val();
     $skill3 = $(this).find('input[name="skill3"]').val();
@@ -81,13 +90,25 @@ jQuery(document).ready(function($) {
     
     // $('#modalleke').append($modal);
     $('#modalleke').append($pad);
-    $('#modalleke').append('<h3>'+ $voornaam + '</h3>');
-    $('#modalleke').append('<div>'+ $omschrijving + '</div>');
-    $('#modalleke').append('<div>'+ $waarom + '</div>');
+    $('#modalleke').append('<h3> dit is uw voornaam '+ $voornaam + '</h3>');
+    $('#modalleke').append('<h3> dit is uw naam '+ $naam + '</h3>');
+
+    $('#modalleke').append('<div> dit is een omschrijving '+ $omschrijving + '</div>');
+    if ($fob == "both"){
+        $('#modalleke').append('<div> Mijn interesse in webdevelopment ligt zowel bij frontend als backend</div>');}else{
+          $('#modalleke').append('<div> Mijn interesse in webdevelopment ligt vooral bij '+$fob+'</div>');  
+        }
+
+    $('#modalleke').append('<div> Mijn drie sterkste punten binnen webdevelopment zijn '+ $skill1 + $skill2+'en'+ $skill3 +'</div>');   
+    
+    $('#modalleke').append('<div> dit is waarom '+ $waarom + '</div>');
+    $('#modalleke').append('<div> dit is wat '+ $wat + '</div>');
+    $('#modalleke').append('<div> dit is de waarde'+ $waarde + '</div>');
+    $('#modalleke').append('<a href="pdf/cv'+$voornaam+$naam+'.pdf" alt="" target="_blank">Bekijk cv  </a>');
     $('#modalleke').css("background","lightgrey");
     $('#modalleke').css("display","block");
         
-    $(this).css("background","red");
+    $(this).css("background","rgba(100,184,136,0.3)");
     
     console.log("card was clicked");
 });
@@ -97,4 +118,10 @@ jQuery(document).ready(function($) {
     // $('#modalleke').empty();
     $('#modalleke').css("display","none");
    });
+   
+   // $('*').not('#modalleke', '.card').on("click", function(){
+   //  console.log ("something else was clicked");
+   // });
+
+   
 });

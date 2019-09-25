@@ -12,26 +12,32 @@
     <!-- XTRA CSS VOOR PROFIELEN !!!!! ADDED 22 09 -->
     <style>
 
+        article.profielen {
+            position:relative;
+        }
+
 
         .container {
             width: 100%;
             display: flex;
             flex-wrap: wrap;
             position:relative;
+            border-radius: 15px;
 
         }
         .card {
             width: 20%;
-            border: 1px solid gold;
+            border: 1px solid #55A79C;
             height: 200px;
             background: white;
             cursor:pointer;
-
+            border-radius: 15px;
             
         }
-        .card-image-top {
+        .card-img-top {
             width: 100px;
             display: block;
+            margin: 0 auto;
         }
 
         img {
@@ -45,16 +51,17 @@
         #modalleke {
             display:none;
             position:absolute;
-            width:70vw;
-            min-height: 90vh;
+            width:100%;
+            height: 100%;
             
             opacity:0.95;
             background: white;
-            left: 5%;
-            top:5px;
+            left: 0px;
+            top:0px;
             z-index: 4;
-            font-size: 3em;
+            font-size: 1em;
             color: black;
+            border-radius: 15px;
         }
 
         #modalleke img {
@@ -63,6 +70,7 @@
             margin:20px auto;
             border-radius: 50%;
             opacity: 1;
+
         }
 
         .closeModal {
@@ -74,8 +82,16 @@
             top: 05px;
             right: 20px;
             color: white;
-            font-size: 1em;
+            font-size: 3em;
             opacity: 1;
+            z-index: 4;
+            border-radius: 50%;
+            line-height: 80px;
+            text-align:center;
+        }
+
+        .fas {
+            z-index: 5;
         }
     </style>
 </head>
@@ -178,7 +194,12 @@
             
             <article id="profielen" class="card-right fadeInLeft">
                     <div class="container">
-    <div id="modalleke" class="modalleke"><div class="closeModal">close</div></div>
+    <div id="modalleke" class="modalleke">
+        <div class="closeModal fas fa-times">
+            
+        
+    </div>
+</div>
 <?php 
 require_once('inc/verbind.inc.php');
 require_once('inc/getAllProfiles.php');
